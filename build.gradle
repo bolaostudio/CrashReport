@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+group 'com.nova'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:30.1.1-jre'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.nova'
+            artifactId 'crashreport'
+            version '1.0.0'
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+            credentials {
+                username "${nexusUsername}"
+                password "${nexusPassword}"
+            }
+        }
+        mavenCentral()
+    }
+}
