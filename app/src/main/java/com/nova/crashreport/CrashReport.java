@@ -15,7 +15,7 @@ public class CrashReport implements Thread.UncaughtExceptionHandler {
     private String emailAddress;
     private String emailSubject;
 
-    public CrashReporterHandler(Context context) {
+    public CrashReport(Context context) {
         this.context = context;
         this.defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
     }
